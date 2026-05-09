@@ -1,0 +1,16 @@
+version: '3.8'
+
+# Người 1 (Frontend) chạy file này
+# Tạo file .env rồi điền IP các máy chạy từng PU
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PU1_URL=${PU1_URL:-http://localhost:8081}
+      - PU2_URL=${PU2_URL:-http://localhost:8082}
+      - PU3_URL=${PU3_URL:-http://localhost:8083}
+      - PU4_URL=${PU4_URL:-http://localhost:8084}
+    restart: unless-stopped
